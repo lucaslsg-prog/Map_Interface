@@ -33,42 +33,19 @@ function initMap() {
     const node_ufam_03 = new google.maps.Marker({ position :position_node3, map,label:'ufam-modem-02',animation: google.maps.Animation.DROP});
 
 
-    node_ufam_01.addListener('click', toggleBounce1);//evento seria uplink
-    node_ufam_02.addListener('click', toggleBounce2);
-    node_ufam_03.addListener('click', toggleBounce3);
+    node_ufam_01.addListener('click', toggleBounce);//evento seria uplink
+    node_ufam_02.addListener('click', toggleBounce);
+    node_ufam_03.addListener('click', toggleBounce);
+    gateway.addListener('click', toggleBounce);
     
 
-      function toggleBounce1() {
+    function toggleBounce() {
 
         //animação para node 1 interagir com o click
-        if (node_ufam_01.getAnimation() !== null) {//condição seria payload diferente de vazio
-            node_ufam_01.setAnimation(null);
+        if (this.getAnimation() !== null) {//condição seria payload diferente de vazio
+            this.setAnimation(null);
         } else {
-          node_ufam_01.setAnimation(google.maps.Animation.BOUNCE);
+          this.setAnimation(google.maps.Animation.BOUNCE);
         }
-    }
-
-    function toggleBounce2(){
-
-        //animação para node 2 interagir com o click
-        if (node_ufam_02.getAnimation() !== null) {//condição seria payload diferente de vazio
-            node_ufam_02.setAnimation(null);
-        } else {
-            node_ufam_02.setAnimation(google.maps.Animation.BOUNCE);
-            
-        }
-    }
-        
-    function toggleBounce3(){
-
-         //animação para node 3 interagir com o click
-         if (node_ufam_03.getAnimation() !== null) {//condição seria payload diferente de vazio
-            node_ufam_03.setAnimation(null);
-        } else {
-            node_ufam_03.setAnimation(google.maps.Animation.BOUNCE);
-           
-        }
-    }
-       
-      
+    }  
   }
