@@ -25,50 +25,31 @@ function initMap() {
       document.getElementById("map"),
       mapOptions
     );
-
-    
+  
     const gateway = new google.maps.Marker({ position: position_gateway, map,label:'LoRa Gateway'});
     const node_ufam_01 = new google.maps.Marker({ position: position_node1, map,label:'node-ufam-01',animation: google.maps.Animation.DROP});
     const node_ufam_02 = new google.maps.Marker({ position: position_node2, map,label:'ufam-modem-01',animation: google.maps.Animation.DROP});
     const node_ufam_03 = new google.maps.Marker({ position :position_node3, map,label:'ufam-modem-02',animation: google.maps.Animation.DROP});
 
-
-    node_ufam_01.addListener('click', toggleBounce1);//evento seria uplink
-    node_ufam_02.addListener('click', toggleBounce2);
-    node_ufam_03.addListener('click', toggleBounce3);
+    //debugger
     
-
-      function toggleBounce1() {
-
+    node_ufam_01.addListener('click', toggleBounce);//evento seria uplink
+    node_ufam_02.addListener('click', toggleBounce);
+    node_ufam_03.addListener('click', toggleBounce);
+    //document.getElementById("content").addEventListener('click', ()=>document.getElementById("content").style.display = "none");//() => mesma coisa q uma função
+    
+     let infowindow = new google.maps.InfoWindow({content: "No data"});
+    
+    function toggleBounce(event) {
+      //document.getElementById("content").style.display = "block";
+      infowindow.open(map,this)//mostrar a janela do marcador clicado
         //animação para node 1 interagir com o click
-        if (node_ufam_01.getAnimation() !== null) {//condição seria payload diferente de vazio
-            node_ufam_01.setAnimation(null);
+        if (this.getAnimation() !== null) {//condição seria payload diferente de vazio
+            this.setAnimation(null);
         } else {
-          node_ufam_01.setAnimation(google.maps.Animation.BOUNCE);
+          this.setAnimation(google.maps.Animation.BOUNCE);
         }
+    
     }
 
-    function toggleBounce2(){
-
-        //animação para node 2 interagir com o click
-        if (node_ufam_02.getAnimation() !== null) {//condição seria payload diferente de vazio
-            node_ufam_02.setAnimation(null);
-        } else {
-            node_ufam_02.setAnimation(google.maps.Animation.BOUNCE);
-            
-        }
-    }
-        
-    function toggleBounce3(){
-
-         //animação para node 3 interagir com o click
-         if (node_ufam_03.getAnimation() !== null) {//condição seria payload diferente de vazio
-            node_ufam_03.setAnimation(null);
-        } else {
-            node_ufam_03.setAnimation(google.maps.Animation.BOUNCE);
-           
-        }
-    }
-       
-      
   }
