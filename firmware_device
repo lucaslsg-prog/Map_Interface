@@ -1,4 +1,6 @@
-//            Codigo para comunicação serial entre arduino e modulo de trasmissao LoRa configurados com endereços da aplicação registrada no TTN server 
+//Codigo para comunicação serial entre arduino e modulo de trasmissao LoRa 
+//configurados com endereços codificados da aplicação registrada no TTN server 
+
 #define GasPin A0
 #define FirePin A1
 #define DigitalGasPin 2
